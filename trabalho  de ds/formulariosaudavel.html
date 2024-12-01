@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Plano</title>
+    <style>
+        .form-container {
+            margin: 20px;
+        }
+        .logo {
+            width: 100px;
+        }
+        .botao-voltar {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .mensagem-sucesso {
+            display: none;
+            color: green;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+ <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7e7bb;;
+        }
+        .botao-voltar {
+            position: fixed;
+            bottom: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container {
+           border:solid 2px;
+            background:  #aed5b4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 45%;
+            width: 25%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color:black;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+    
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 200px;
+            height:200px;
+            
+        }
+        @media screen and (max-width:640px) {
+            .logo {
+                width: 150px;
+                height:150px;
+            }
+            .form-container {
+                height: 50%;
+                width: 60%;
+            }
+        }
+  
+            .form-container {
+                margin: 20px;
+            }
+           
+            .botao-voltar {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                padding: 10px;
+                background-color: #aed5b4;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                border:solid 2px;
+            }
+            .mensagem-sucesso {
+                display: none;
+                color: green;
+                margin-top: 20px;
+                font-weight: bold;
+                margin-top: 50%;
+            }
+            .mensagem-erro {
+                display: none;
+                color: red;
+                margin-top: 20px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+    
+    <div class="form-container">
+        <img src="logo-removebg-preview.png" alt="Logo" class="logo">
+        <br>
+        <form id="formulario" onsubmit="enviarFormulario(event)">
+            <div class="form-group">
+                <label for="plano">Plano Selecionado:</label>
+                <select id="plano" name="plano" onchange="atualizarValor()" required>
+                    <option value=""> </option>
+                    <option value="49.90">Básico </option>
+                    <option value="89.90">Essencial </option>
+                    <option value="199.90">Avançado </option>
+                    <option value="299.90">Premium </option>
+                    <option value="499.90">Platinum</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="valor">Valor do Plano:</label>
+                <input type="text" id="valor" name="valor" readonly>
+            </div>
+            <div class="form-group">
+                <label for="pagamento">Tipo de Pagamento:</label>
+                <select id="pagamento" name="pagamento" required>
+                    <option value=""> </option>
+                    <option value="cartao">Cartão de Crédito</option>
+                    <option value="boleto">Boleto Bancário</option>
+                    <option value="pix">PIX</option>
+                </select>
+                <div>
+                    <label for="email">E-mail:</label><br>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <button type="submit">Enviar Pedido</button>
+        </form>
+        <div class="mensagem-sucesso" id="mensagemSucesso">
+            Pedido enviado com sucesso! Logo entraremos em contato para realizarmos um contrato de forma adequada.
+        </div>
+        <div class="mensagem-erro" id="mensagemErro">
+            Por favor, preencha todos os campos obrigatórios.
+        </div>
+        <button class="botao-voltar" onclick="history.back()">Voltar</button>
+    </div>
+    
+    <script>
+        function atualizarValor() {
+            var plano = document.getElementById("plano");
+            var valor = document.getElementById("valor");
+            valor.value = "R$" + plano.value;
+        }
+    
+        function enviarFormulario(event) {
+            event.preventDefault();
+    
+            var plano = document.getElementById("plano").value;
+            var pagamento = document.getElementById("pagamento").value;
+            var email = document.getElementById("email").value;
+    
+            if (plano === "" || pagamento === "" || email === "") {
+                document.getElementById("mensagemErro").style.display = 'block';
+            } else if (!validarEmail(email)) {
+                alert("Por favor, insira um e-mail válido.");
+            } else {
+                mostrarAlerta();
+                document.getElementById("mensagemSucesso").style.display = 'block';
+                document.getElementById("mensagemErro").style.display = 'none';
+                limparFormulario();
+            }
+        }
+    
+        function limparFormulario() {
+            var formulario = document.getElementById("formulario");
+            formulario.reset();
+        }
+    
+        function validarEmail(email) {
+            var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return re.test(email);
+        }
+    
+        function mostrarAlerta() {
+            alert("Seu pedido foi enviado com sucesso! Logo entraremos em contato para realizarmos um contrato de forma adequada.");
+        }
+    </script>
+    
+   
+</body>
+</html>

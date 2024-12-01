@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta  http-equiv="X-AU-compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/html" href="../html/pagina1.html"/>
+    <title>Amigo Saúde</title>
+</head>
+<style>
+    :root
+        {
+            --color--cabecalho:#aed5b4;
+            --color--fundo:#f7e7bb;
+            --color--letras:rgb(0, 0, 0);
+            --color--sombra:rgb(0, 0, 0);           
+            --color--links:rgb(255, 255, 255);
+            --color--caixa_dos_link:rgb(38, 1, 108);
+            --color--branco:#fff;
+            --color--mini_menu:rgb(27, 107, 31);
+            --color--sombra_link:#818181;
+            --color--verdeescuro:rgb(2, 109, 38);
+        }
+        *{
+            margin:0;
+            padding: 0;
+            
+        }
+        body
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--color--fundo);
+            color:var(--color--letras);
+            
+        }
+        .img_logo_header
+        {
+            width:50px;
+        }
+        .header,
+        .navegacao_pagina
+        {
+            display:flex;
+            flex-direction:row;
+            align-items: center;
+        }
+        .header{
+            background-color: var(--color--cabecalho);
+            height:100px;
+            justify-content:center;
+            padding:0 10%;
+            box-shadow: 1px 1px 25px var(--color--sombra);   
+        }
+        .navegacao_pagina{
+            gap:3em;
+            z-index:2;
+        }
+        .navegacao_pagina a {
+            text-decoration: none;
+            color:var( --color--links);  
+            transition: 1s;
+            font-weight:bold;
+             background-color: var(--color--caixa_dos_link);
+             padding: 10px;
+             border-radius:10px ;
+            }
+            .active{
+            background-color:var(--color--sombra_link);
+            border-radius: 10px;
+            padding: 10px; 
+        }
+        .texto1{
+            text-align: center;
+            padding-top: 5em;
+            height: 100vh;
+            transition:1s;
+        }
+        .botao_estrela{
+            background-color:var(--color--branco);
+            padding: 5px;
+             border-radius:10px ;
+             box-shadow: 1px 1px 25px var(--color--sombra);
+             cursor:pointer;
+             transition: 0.5 ease;
+        }
+        .botao_estrela:hover{
+        background-color: var( --color--cabecalho);
+    }
+        .botao_barrinha{
+            background-color:var(--color--branco);
+            padding: 5px;
+             border-radius:10px ;
+             box-shadow: 1px 1px 25px var(--color--sombra);
+             display:none;       
+       }
+        .subtitulos{
+        color:rgb(255, 0, 0);
+        text-align:center;
+        font-size: 300%;
+        margin-top: 10%;
+    }
+    .vvv{
+        text-align:center;
+    }
+    .conteiner
+    {
+        background-color: #aed5b4;
+        width: 30%;
+        height: 55vh;
+        border:2px solid;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        border-radius: 2%;
+        border:2px solid var(--color--verdeescuro);
+        font-size: 110%;
+        }
+        .conteiner2{
+            background-color: #aed5b4;
+        width: 30%;
+        height:55vh;
+        border:2px solid;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        border-radius: 2%;
+        border:2px solid var(--color--verdeescuro);
+        
+     
+        }
+        .conteinermais{
+        justify-content: center;
+        background-color: #aed5b4;
+        width: 30%;
+        height: 55Vh;
+        border:2px solid var(--color--verdeescuro);
+        border-radius: 2% ;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        }
+        .vermais{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align:justify;
+            font-size:150%;
+            background:color var(--color--cabecalho);
+           
+
+
+        }
+        .botao-voltar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #aed5b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border:solid 2px;
+        }
+    .planos{
+        margin-left: 2.5%;
+        margin-top: 10%;
+        display:flex;
+        flex-direction:row;
+        gap:2.5%;  
+        margin-bottom: 5%;   
+        
+    }
+    .conteudodalista{
+        align-items: left;
+        justify-content: left;
+        margin-left: 0;
+    }
+        .setamais{
+            display:flex;
+            justify-content:center;
+            margin-top: 25%;
+           position:relative;
+           
+           background-color: transparent;
+           border:none;
+           color:blue;
+           cursor: pointer;
+        }
+        
+        .navegacao_planos a {
+    text-decoration: none;
+            color:var( --color--links);  
+            transition: 1s;
+            font-weight:bold;
+             background-color: var(--color--caixa_dos_link);
+             padding: 10px;
+             border-radius:10px ;
+}
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+.logolink
+        {
+            width:100px;
+            cursor: pointer;
+          
+        }
+        .setavolta{
+            justify-content: initial;
+        }
+        @media screen and (max-width:640px) {
+    
+      
+        .planos{
+            position:relative;
+            flex-direction: column;
+        }
+   
+    
+    .planos
+     {
+       margin-top: 10%;
+       width:100%;
+       height:200%;  
+    }
+   
+    .conteiner
+    {   background-color: #aed5b4;
+        width: 20rem;
+        height: 25rem;
+        border:2px solid;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        border-radius: 2%;
+        border:2px solid var(--color--verdeescuro);
+        padding-left: 5vw;
+        padding-right: 5vw;
+
+        
+        }
+        .conteiner2{
+        background-color: #aed5b4;
+        width: 20rem;
+        height: 30rem;
+        border:2px solid;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        border-radius: 2%;
+        border:2px solid var(--color--verdeescuro);
+        padding-left: 5vw;
+            padding-right: 5vw;
+        }
+        .conteinermais{
+            width: 20rem;
+            height: 30rem;
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+        
+
+        
+      
+        
+      
+        .planos{
+            gap:2vh;
+        }
+        .conteiner{
+            margin-top: 10%;
+        }
+        }
+</style>
+<body>
+
+
+    <div class="header" id="header">
+        <a href="pagina1.html" class="setavolta">
+            <img src="logo-removebg-preview.png" class="logolink">
+        </a>
+        
+
+
+
+</div>
+    </div>
+    <div>
+        <h2 class="subtitulos" >Planos</h2>
+       </div>
+       
+
+<section  class="planos" id="planos">
+    
+
+    <section class="conteiner">
+ 
+    <div class= "conteudodalista">
+
+
+        <ul id="#planos"><h2> Plano Básico</h2></ul>
+        <br>
+        <li>Preço:R$ 49,90/mês</li>
+        <br>
+         <h3>Beneficios:</h3>
+         <br>
+        <li>Consultas ilimitadas</li>
+        <br>
+        <li>Vacinação básica</li>
+        <br>
+        <li>Suporte 24h </li>
+       <br>
+            <div  class="navegacao_planos">
+                <a href ="formulariosaudavel.html">contratar plano</a>
+         </div>
+    </div>
+    </section>
+    <section class="conteiner2">
+        <div  class= "conteudodalista">
+            <ul><h2>Plano Essencial</h2></ul>
+            <br>
+            <li>Preço: R$ 89,90/mês</li>
+            <br>
+            <h3>Beneficios:</h3>
+            <br>
+            <li>Consultas ilimitadas </li>
+            <br>
+            <li>Vacinação básica + vacinação contra gripe</li>
+            <br>
+            <li>Suporte 24h</li>
+            <br>
+            <li>Descontos em medicamentos</li> 
+            <br>
+          
+            <div class="navegacao_planos">
+                <a href ="formulariosaudavel.html">contratar plano</a>
+            </div>
+            
+        </div>
+        </section>
+        <section class="conteinermais">
+            
+            <div class= "conteudodalista">
+                    <ul><h2>Plano Intermediário</h2></ul>
+            <br>
+            <li>Preço:R$ 139,90/mês</li>
+            <br>
+            <h3>Beneficios:</h3>
+            <br>
+            <li>Consultas ilimitadas</li>
+            <br>
+            <li>Vacinação completa</li>
+            <br>
+            <li>Exames laboratoriais anuais</li>
+            <br>
+            <li>Descontos em medicamentos e produtos</li> 
+            <br>
+          
+            <div class="navegacao_planos">
+                <a href ="formulariosaudavel.html">contratar plano</a>
+            </div>
+                  
+                          
+                    </button>
+                    </ul>
+               
+    
+            </div>
+            </section>
+</section>
+<br>
+<section  class="planos" id="planos2">
+
+<section class="conteiner">
+ 
+    <div class= "conteudodalista">
+
+
+        <ul id="#planos"><h2> Plano Avançado</h2></ul>
+        <br>
+        <li>Preço:R$ 199,90/mês</li>
+        <br>
+         <h3>Beneficios:</h3>
+         <br>
+        <li>Consultas ilimitadas</li>
+        <br>
+        <li>Vacinação completa </li>
+        <br>
+        <li> Exames laboratoriais anuais </li>
+       <br>
+       
+     <li>2 consulta de especialidade por ano </li>
+         <br>
+      <li>desconto em procedimentos cirúrgicos </li>
+     <br>
+     
+     
+            <div  class="navegacao_planos">
+                <a href ="formulariosaudavel.html">contratar plano</a>
+         </div>
+    </div>
+    </section>
+    <section class="conteiner2">
+        <div  class= "conteudodalista">
+            <ul><h2>Plano Premium</h2></ul>
+            <br>
+            <li>Preço:R$ 299,90/mês</li>
+            <br>
+            <h3>Beneficios:</h3>
+            <br>
+            <li>Consultas ilimitadas</li>
+            <br>
+            <li>Vacinação completa</li>
+            <br>
+            <li>Exames laboratoriais anuais e de imagens anuais</li>
+            <br>
+            <li> 4 consultas de especialidade por ano </li>
+           <br>
+            <li>Descontos em procedimentos cirúrgicos e internações</li> 
+            <br>
+           
+          
+            <div class="navegacao_planos">
+                <a href ="formulariosaudavel.html">contratar plano</a>
+            </div>
+            
+        </div>
+        </section>
+        <section class="conteinermais">
+            <div class= "conteudodalista">
+                <ul><h1 >Plano Platinum</h1>
+                    <br>
+                    <li>Preço:R$ 499,90/mês</li>
+                    <br>
+                    <h3>Beneficios:</h3>
+                    <br>
+                    <li>Consultas ilimitadas</li>
+                    <br>
+                    <li>Vacinação completa</li>
+                    <br>
+                    <li>Exames laboratoriais anuais e de imagens anuais</li>
+                    <br>
+                    <li> consultas de especialidade ilimitadas </li>
+                   <br>
+                    <li>internações e cirugias cobertas</li> 
+                    <br>
+                    <li>Desconto em todos os produtos e serviços </li>
+                    <br>
+                    <div class="navegacao_planos">
+                        <a href ="formulariosaudavel.html">contratar plano</a>
+                    </div>
+            </div>
+            </section>
+</section>
+<a href="pagina1.html">
+    <button class="botao-voltar" onclick="history.back()">Voltar</button>
+</a>
+</body>
+</html>
+        </body>
