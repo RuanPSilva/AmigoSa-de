@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta  http-equiv="X-AU-compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link rel="stylesheet" type="text/html" href="trabalho  de ds/PAGINA2.html"/>
+     <link rel="stylesheet" type="text/html" href="trabalho  de ds/formulariosaudavel.html"/>
+     <link rel="shortcut icon" href="cachorro.png">
+
+    <title>Amigo Saúde</title>
+</head>
+<style>
+    :root
+        {
+            --color--cabecalho:#aed5b4;
+            --color--fundo:#f7e7bb;
+            --color--letras:rgb(0, 0, 0);
+            --color--sombra:rgb(0, 0, 0);           
+            --color--links:rgb(255, 255, 255);
+            --color--caixa_dos_link:rgb(38, 1, 108);
+            --color--branco:#fff;
+            --color--mini_menu:#1b6b1f;
+            --color--sombra_link:#818181;
+            --color--verdeescuro:rgb(2, 109, 38);
+            --:#2767cd;        }
+        *{
+            margin:0;
+            padding: 0;
+            
+        }
+        body
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--color--fundo);
+            color:var(--color--letras);
+            
+        }
+        .img_logo_header
+        {
+            width:50px;
+        }
+        .header,
+        .navegacao_pagina
+        {
+            display:flex;
+            flex-direction:row;
+            align-items: center;
+        }
+        .header{
+            background-color: var(--color--cabecalho);
+            height:50px;
+            justify-content:space-between;
+            padding:0 10%;
+            box-shadow: 1px 1px 25px var(--color--sombra);   
+        }
+        .navegacao_pagina{
+            gap:3em;
+            z-index:2;
+        }
+        .navegacao_pagina a {
+            text-decoration: none;
+            color:var( --color--links);  
+            transition: 1s;
+            font-weight:bold;
+             background-color: var(--color--caixa_dos_link);
+             padding: 10px;
+             border-radius:10px ;
+            }
+            .active{
+            background-color:var(--color--sombra_link);
+            border-radius: 10px;
+            padding: 10px; 
+        }
+        .texto1{
+            text-align: center;
+            padding-top: 5em;
+            height: 100vh;
+            transition:1s;
+        }
+        .claro,.botao_estrela{
+            background-color:var(--color--branco);
+            padding: 5px;
+             border-radius:10px ;
+             box-shadow: 1px 1px 25px var(--color--sombra);
+             cursor:pointer;
+             transition: 0.5 ease;
+        }
+        .botao_estrela:hover{
+        background-color: var( --color--cabecalho);
+    }
+    .claro:hover{
+        background-color: var( --color--cabecalho);
+    }
+    .claro,.botao_barrinha{
+            background-color:var(--color--branco);
+            padding: 5px;
+             border-radius:10px ;
+             box-shadow: 1px 1px 25px var(--color--sombra);
+             display:none;       
+       }
+       @media screen and (max-width:768px){
+            .botao_barrinha{
+                display:block;
+            }
+                .navegacao_pagina{
+                    position:absolute;
+                    flex-direction: column;
+                    top:0;
+                    background-color:var(--color--mini_menu) ;
+                    height:100%;
+                    width:40vw;
+                    padding: 1em;
+                    animation-duration: 1s;
+                    margin-left: -100vw;
+                }
+                .carrossel{
+            margin-top: 405;
+                } 
+       } 
+        @keyframes ShowSidebar {
+                    from {margin-left:-100vw;}
+                    top{margin-left: -10vw;}
+             }  
+    .texto1
+    {
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-align:justify;
+        font-size:130%;
+        background:color var(--color--cabecalho);
+    }
+   .vvv, .texto1 h1, .subtitulos{
+        color:#ff0000;
+        text-align:center;
+    }
+    .vvv{
+        text-align:center;
+        font-size: 150%;
+
+    }
+    .content{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+        padding: 2vh;
+    }
+    .content p,.content_esquerda p{
+        margin-right:3%;
+        width: 50%;
+    }
+    .content_esquerda{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+    }
+    .content_esquerda p{
+        margin-left:3%;
+        width:60%;  
+    }
+    .esquerda{
+        width:20vw;
+        height:30vh;
+        margin-right: 3em;
+        border-radius: 2px;  
+        border:solid 2px;
+    }
+    .direita{
+        width:20vw;
+        height: 30vh;
+        margin-right: 3em;
+        gap:1em;
+        border-radius: 2px;
+        border:solid 2px;
+    }
+    .laranja{
+        width:20vw;
+        height:30vh;
+        margin-right: 3em;
+        border-radius: 2px;
+        border:solid 2px;
+    }
+    .content,.content_esquerda{
+        margin-top: 1em ;
+        margin-left: 1em;
+        padding-bottom: 1em;
+        transition:1s;
+        }
+.carrossel{
+    margin-top:40vh;
+    height:80vh;
+    width:100vw;
+    overflow: hidden;
+    justify-content: center;
+    position: relative;
+    left:50%;
+    transform:translate(-50%,-50%);
+    border:2px solid;
+}
+.carrossel .slide img{
+    height:100%;
+    width:100%;
+}
+.navcarrossel{
+    bottom: 150px;
+    left: 950px;
+    display: flex;
+    margin-top: -40vh;    
+    justify-content: center;
+    gap:2px;
+}
+    .bar{
+        height:1.5vh;
+        width:1.5vw;
+        border: 2px solid var(--color--letras);
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.5 ease;
+        position:relative;
+        display: flex;
+    }
+    .bar:hover{
+        background-color: var( --color--cabecalho);
+    }
+    .input{
+        display:none;
+    }
+    .slides{
+        display:flex;
+        width:500%;
+        height:100%;
+    }
+    .slide{
+        width:20%;
+    }
+    
+    #f1:checked~.s1{
+        margin:0%;
+    }
+    #f2:checked~.s1{
+        margin:-10%;
+    }
+    #f3:checked~.s1{
+        margin:-20%;
+    }
+    #f4:checked~.s1{
+        margin:-30%;
+    }
+    #f5:checked~.s1{
+        margin:-40%;
+    }
+    .conteiner
+    {
+        background-color: #aed5b4;
+        width: 30%;
+        height: 45vh;
+        border:2px solid;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        border-radius: 2%;
+        border:2px solid var(--color--verdeescuro);
+        font-size: 110%;
+        }
+        .conteiner2{
+         background-color: #aed5b4;
+        width: 30%;
+        height: 45vh;
+        border:2px solid;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        border-radius: 2%;
+        border:2px solid var(--color--verdeescuro);
+        
+        padding-left: 1vw;
+        padding-right: 1vw;
+        }
+        .conteinermais{
+        justify-content: center;
+        background-color: #aed5b4;
+        width: 30%;
+        height: 45vh;
+        border:2px solid var(--color--verdeescuro);
+        border-radius: 2% ;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        }
+        .vermais{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align:justify;
+            font-size:150%;
+            background:color var(--color--cabecalho);
+            margin-left:5%
+
+        }
+    .planos{
+        margin-left: 2.5%;
+        margin-top: 30%;
+        display:flex;
+        flex-direction:row;
+        gap:2.5%;     
+        
+    }
+        .vermais{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align:justify;
+            font-size:150%;
+            background:color var(--color--cabecalho);
+            margin-left:5%
+
+        }
+    
+    .conteudodalista{
+        align-items: left;
+        justify-content: left;
+        margin-left: 0;
+    }
+        .setamais{
+            display:flex;
+            justify-content:center;
+           margin-top: 25%;
+           position:relative;
+           margin-left: 5%;
+           background-color: transparent;
+           border:none;
+           color:blue;
+           cursor: pointer;
+        }
+        
+ .perguntasfrequentes 
+{
+    text-align: center;
+    color: #e6e6e6;
+    background-color: rgba(18, 156, 30, 0.863);
+    width: 25VW;
+    height: auto;
+    border-radius: 1vw;
+    margin-left: 40%;
+    margin-top: 10%;
+    font-size: 150%;
+    border:2px solid var(--color--verdeescuro);
+    justify-content:center;
+
+}
+.escondida
+{
+    visibility: hidden;
+    height:0px;
+    transition: 0.1s 0.1s ease all;
+  
+    
+  
+
+}
+.exibida
+{
+    visibility: visible;
+    height:auto;
+    transition: 0.1s 0.1s ease all;
+    margin-right: 10%;
+  
+    
+}
+[id*="Resp"]
+{
+    width:50%;
+    margin-left: 30%;
+    background-color: #ffffff;
+    
+    font-family: Arial, Helvetica, sans-serif;
+    border: rgb(0, 0, 0) 2px solid;
+    text-align: center;
+    font-size: 110%;
+}  
+.pergunta
+{
+    background-color:rgb(248, 240, 240);
+    color:rgb(0, 0, 0);
+    text-decoration:none;
+    text-align:center;
+    cursor:pointer;
+    width: 50%;
+    height:30%;
+    margin-left: 30%;
+  align-items: center;
+    border-radius: 5%;
+  border:solid 2px;
+    margin-bottom: 0.3%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 120%;
+   
+
+}
+.ajuste{
+    margin-right: 10%;
+}
+
+.frequentes{
+    margin-top: 10%;
+}
+.iconedecontato {
+    display: flex;  
+    gap:10px; 
+    justify-content: center;
+    position: relative;
+    margin-top: 50px;
+    margin-right: 5%;
+    
+}
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #aed5b4;
+    color: rgb(13, 11, 11);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    border:solid 2px;
+}
+.back-to-top:hover {
+    background-color: #0056b3;
+}
+.formasdecontato{
+    text-align: center;
+    color: #e6e6e6;
+    background-color: rgba(18, 156, 30, 0.863);
+    width: 25VW;
+    height: auto;
+    border-radius: 1vw;
+    margin-left: 35%;
+    margin-top: 10%;
+    font-size: 150%;
+    border:2px solid var(--color--verdeescuro);
+    justify-content:center;
+
+}
+.navegacao_planos a {
+    text-decoration: none;
+            color:var( --color--links);  
+            transition: 1s;
+            font-weight:bold;
+             background-color: var(--color--caixa_dos_link);
+             padding: 10px;
+             border-radius:10px ;
+}
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+.whatsapp {
+    background-color: #25D366;
+}
+.whatsapp:hover {
+    background-color: #1DA851;
+}
+.instagram {
+    background-color: #E4405F;
+}
+.instagram:hover {
+    background-color: #C13584;
+}
+.email {
+    background-color: #007BFF;
+}
+.email:hover {
+    background-color: #0056b3;
+}
+.claro{
+    display: none;
+}
+
+
+@media screen and (max-width:640px) {
+    .texto1 img{
+        width: 50vw;
+    }
+       .navcarrossel{
+        margin-top: -50%;
+       }
+        .content,
+        .content_esquerda,
+        .texto1,
+        .planos{
+            position:relative;
+            flex-direction: column;
+        }
+   
+    .carrossel{
+        margin-top:100%;
+    }
+    .bar{
+        margin-top: 10%;  
+    }
+    .texto1{
+        font-size: 100%;
+    }
+    .planos
+     {
+       margin-top: 600%;
+       width:100%;
+       height:200%;  
+    }
+    .perguntasfrequentes {
+         margin-top: 20%;   
+         width:50VW;
+         margin-right:25%;
+         margin-left: 30%;
+          }
+    .setamais{
+        width:30vw;
+        height:40vh;
+    }
+    
+    .conteiner
+    {   background-color: #aed5b4;
+        width: 20rem;
+        height: 25rem;
+        border:2px solid;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        border-radius: 2%;
+        border:2px solid var(--color--verdeescuro);
+        padding-left: 5vw;
+        padding-right: 5vw;
+
+        
+        }
+        .conteiner2{
+        background-color: #aed5b4;
+        width: 20rem;
+        height: 30rem;
+        border:2px solid;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        border-radius: 2%;
+        border:2px solid var(--color--verdeescuro);
+        padding-left: 5vw;
+            padding-right: 5vw;
+        }
+        .conteinermais{
+            width: 20rem;
+            height: 20rem;
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+        .vermais{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align:justify;
+            font-size:150%;
+            background:color var(--color--cabecalho);
+            padding-left: 1vw;
+            padding-right: 1vw;
+            
+       
+
+        }
+        .frequentes{
+            margin-top: 20%;
+        }
+        
+      
+        .planos{
+            gap:2vh;
+        }
+        .conteiner{
+            margin-top: 50%;
+        }
+    }
+    @media screen {
+        
+    }
+    
+</style>
+<body id="body">
+    <div class="header" id="header">
+        
+        <button onclick="togglesidebar()"  class="botao_barrinha"id="botao_barrinha">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+            </svg>
+        </button>
+
+         <div class="logo_da_firma">
+           
+            <img src="trabalho  de ds/logo-removebg-preview.png" class="img_logo_header">
+        </div>
+
+        <div class="navegacao_pagina"id="navegacao_pagina">
+            <button onclick="togglesidebar()" class="botao_barrinha">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+                  </svg>
+             </button>
+             <span class="claro" id="claro1" onClick="volta_fundo()"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-brightness-low-fill" viewBox="0 0 16 16">
+                <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8.5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707m-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707m7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707M3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707"/>
+              </svg>
+            </span>
+             <button class="botao_estrela" id="colorButton">
+                <svg onClick="troca_fundo()" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                    <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
+                  </svg>
+                  
+             </button>
+               <a href ="#AmigosSaude" class="active">quem somos</a>
+               <a href ="#planos">Planos oferecidos</a>
+               <a href ="#contato">nossos Contatos</a>
+               <a href ="#perguntasfrequentes">perguntas frequentes</a>
+               <a  href ="Política.html">politica de privacidade</a>
+        </div>
+    </div>
+
+ <div class="carrossel">
+    <div class="slides">
+        <input class="input" type="radio" name="foto" id="f1" checked>
+        <input class="input" type="radio" name="foto" id="f2">
+        <input class="input" type="radio" name="foto" id="f3">
+        <input class="input" type="radio" name="foto" id="f4">
+        <input class="input" type="radio" name="foto" id="f5">
+
+        <div class="slide s1">
+            <img src="trabalho  de ds/Carro_1.jpg" >
+        </div>
+        <div class="slide">
+            <img src="trabalho  de ds/Carro_2.jpg">
+        </div>
+        <div class="slide">
+            <img src="trabalho  de ds/Carro_3.jpg" >
+        </div>
+        <div class="slide">
+            <img src="trabalho  de ds/Carro_4.jpg" >
+        </div>
+        <div class="slide">
+            <img src="trabalho  de ds/Carro_5.jpg" >
+        </div>
+    </div>
+ </div>
+ <div class="navcarrossel">
+    <label class="bar" for="f1"></label>
+    <label class="bar" for="f2"></label>
+    <label class="bar" for="f3"></label>
+    <label class="bar" for="f4"></label>
+    <label class="bar" for="f5"></label>
+ </div>
+
+    <div onclick="closesidebar()" class="texto1" id="texto1">
+        
+        <h1 id="subtitulo1">Amigos Saude </h1>
+        <div id="content" class="content"  >
+            <p>
+                Em 2015, Ana e Carlos, um casal apaixonado por animais, enfrentaram altos custos médicos para tratar seu cão, Max. Ana, veterinária, e Carlos, empresário, decidiram criar a Amigos Saúde para ajudar outros tutores a oferecerem cuidados médicos de qualidade para seus pets sem preocupações financeiras. Hoje, a Amigos Saúde é sinônimo de saúde e bem-estar para animais de estimação em todo o país.
+            </p>
+            <br>
+            <img  src="trabalho  de ds/pidao.jpeg" class="direita"/> 
+        </div>
+        <hr class="hr"/>
+        <h2 id="subtitulo2" class="subtitulos" >Como trabalhamos</h2>
+        <div class="content_esquerda" id="content2">
+      
+            <img src="trabalho  de ds/chapeugato.jpeg" class="esquerda"/>
+            <br>
+            <p>A Amigos Saúde fortaleceu seu vínculo com a comunidade organizando eventos como feiras de adoção e campanhas de vacinação. Ana, veterinária, lidera workshops educativos para tutores, enquanto Carlos, com sua visão empresarial, busca parcerias com clínicas e fornecedores. A empresa também criou um programa de assistência social que oferece tratamentos gratuitos para pets de famílias de baixa renda, garantindo acesso a cuidados de qualidade. Com uma equipe dedicada, a Amigos Saúde se tornou referência nacional em cuidados veterinários, mantendo a missão de promover saúde e bem-estar para os animais. Ana e Carlos, inspirados pelo amor a seu pet Max, continuam a melhorar a vida dos animais e seus tutores em todo o país.A Amigos Saúde fortaleceu seu vínculo com a comunidade organizando eventos como feiras de adoção e campanhas de vacinação. Ana, veterinária, lidera workshops educativos para tutores, enquanto Carlos, com sua visão empresarial, busca parcerias com clínicas e fornecedores. A empresa também criou um programa de assistência social que oferece tratamentos gratuitos para pets de famílias de baixa renda, garantindo acesso a cuidados de qualidade. Com uma equipe dedicada, a Amigos Saúde se tornou referência nacional em cuidados veterinários, mantendo a missão de promover saúde e bem-estar para os animais. Ana e Carlos, inspirados pelo amor a seu pet Max, continuam a melhorar a vida dos animais e seus tutores em todo o país.
+            </p>
+        </div>
+        <hr/>
+        <h2 class="subtitulos" id="subtitulo3"> Sobre os Planos</h2>
+        <div class="content" id="content3">
+            <p>
+                Os planos de saúde pet da Amigos Saúde oferecem uma cobertura completa para garantir o bem-estar e a saúde dos seus animais de estimação. Com planos acessíveis e personalizados, a agência proporciona acesso a uma rede de clínicas e profissionais especializados, oferecendo atendimento de qualidade em consultas, exames, cirurgias e tratamentos diversos. Além disso, os planos contam com a tranquilidade de um suporte contínuo, permitindo que os tutores possam focar no cuidado e no conforto de seus pets sem se preocupar com imprevistos financeiros. Com a Amigos Saúde, seu pet recebe o melhor em atendimento veterinário, com a confiança e a segurança que você e seu amigo de quatro patas merecem!
+            </p>
+            <br>
+            <img src="trabalho  de ds/familia.jpeg" class="laranja"/>
+            
+        </div>
+        <hr/>
+        <h2 id="subtitulo4" class="subtitulos"> Planos</h2>
+    </div>
+<br>
+
+    <section  class="planos" id="planos">
+ 
+        <section class="conteiner">
+     
+        <div class= "conteudodalista">
+
+
+            <ul id="#planos"><h2> Plano Básico</h2></ul>
+            <br>
+            <li>Preço:R$ 49,90/mês</li>
+            <br>
+             <h3>Beneficios:</h3>
+             <br>
+            <li>Consultas ilimitadas</li>
+            <br>
+            <li>Vacinação básica</li>
+            <br>
+            <li>Suporte 24h </li>
+           <br>
+                <div  class="navegacao_planos">
+                    <a href ="trabalho  de ds/formulariosaudavel.html">contratar plano</a>
+             </div>
+        </div>
+        </section>
+        <section class="conteiner2">
+            <div  class= "conteudodalista">
+                <ul><h2>Plano Intermediário</h2></ul>
+                <br>
+                <li>Preço:R$ 139,90/mês</li>
+                <br>
+                <h3>Beneficios:</h3>
+                <br>
+                <li>Consultas ilimitadas</li>
+                <br>
+                <li>Vacinação completa</li>
+                <br>
+                <li>Exames laboratoriais anuais</li>
+                <br>
+                <li>Descontos em medicamentos e produtos</li> 
+                <br>
+                <div class="navegacao_planos">
+                    <a href ="trabalho  de ds/formulariosaudavel.html">contratar plano</a>
+                </div>
+                
+            </div>
+            </section>
+            <section class="conteinermais">
+                <div class="vermais">
+                    <ul><h1 class="vvv">Ver mais</h1>
+                        <p class="pp"></p>
+                       <a href="trabalho  de ds/PAGINA2.html" class="setamais">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                              </svg>
+                       </a>
+                              
+                        </button>
+                        </ul>
+                   
+        
+                </div>
+                </section>
+    <div>
+        </section class="frequentes" >
+    <div class="ajuste">
+        <h2 class=" perguntasfrequentes" id="perguntasfrequentes">Perguntas Frequentes</h2>
+        <br>
+        <div id="p1" onClick="Exibe_Resposta('Resp1','p1')" class="pergunta">Quais são os sintomas de doenças comuns em pets?</div>
+        <div id="Resp1" class="escondida">
+            Os sintomas podem variar, mas alguns sinais comuns incluem letargia, perda de apetite.
+
+            vômito, diarreia, tosse, espirros, coceira excessiva, mudanças no comportamento e dificuldade para respirar. Se você notar qualquer um desses sintomas, é importante consultar um veterinário.
+        </div>
+        <p></p>
+        <p></p>
+        <div id="p2" onClick="Exibe_Resposta('Resp2','p2')" class="pergunta">Com que frequência devo levar meu animal para consultas veterinárias?</div>
+        <div id="Resp2" class="escondida">
+            Em geral, recomenda-se levar o seu pet ao veterinário pelo menos uma vez por ano para exames de rotina. Animais mais velhos ou com condições de saúde específicas podem precisar de consultas mais frequentes. Sempre siga as orientações do seu veterinário.
+        </div>
+        <p></p>
+        <p></p>
+        <div id="p3" onClick="Exibe_Resposta('Resp3','p3')" class="pergunta">Qual é a melhor dieta para meu animal de estimação?
+        </div>
+        <div id="Resp3" class="escondida">
+            A dieta ideal varia de acordo com a espécie, idade, peso e condição de saúde do seu animal. É importante escolher ração de qualidade e, se possivel, consultar um veterinário para uma dieta balanceada que atenda às necessidades especificas do seu pet.
+        </div>
+        <p></p>
+        <p></p>
+        <div id="p4" onClick="Exibe_Resposta('Resp4','p4')" class="pergunta">Como posso prevenir pulgas e carrapatos?</div>
+        <div id="Resp4" class="escondida">
+            A prevenção inclui o uso de antiparasitários recomendados pelo veterinario, banhos regulares e manter o ambiente limpo. Verifique seu pet frequentemente, especialmente após passeios em áreas com vegetação aita.
+        </div>
+        <p></p>
+        <p></p>
+        <div id="p5" onClick="Exibe_Resposta('Resp5','p5')" class="pergunta">Meu pet está se comportando de maneira estranha. O que posso fazer?</div>
+        <div id="Resp5" class="escondida">
+            Mudanças no comportamento podem indicar problemas de saúde ou estresse. Observe o que pode estar causando a mudança e, se os sintomas persistirem ou se o comportamento for preocupante, consulte um veterinário para uma avaliação adequada.
+        </div>
+        <p></p>
+        <p></p>
+        <br/>
+    </div>
+</div>
+    </section>
+
+
+
+    </div>
+    <div class="contatosicones">
+            <div class="contatos">
+                <h2 class="formasdecontato">Formas de contato</h2>
+            </div>
+            <br>
+            <section class="iconedecontato " id="contato">
+            <div >
+                <div class="social-buttons">
+                    <a href="https://wa.me/5511949483949" class="btn whatsapp" ><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/amigosaude_2015" class="btn instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto: amigosaude157@gaml.com" class="btn email"><i class="fas fa-envelope"></i></a>
+                </div>
+                <script src="script.js"></script>
+            </div>
+        </section>
+
+    </div>
+               </div>
+            </div>
+        </div>
+        <div>
+            <a href="#top" class="back-to-top">Inicio</a>
+
+           
+            <a id="header"></a>
+        </div>
+        <script language="JavaScript">
+        var header= document.getElementById("header");
+        var navegacaopagina= document.getElementById("navegacao_pagina");
+        var texto1= document.getElementById("texto1");
+        var ShowSidebar = false;
+        
+        function togglesidebar()
+        {
+        ShowSidebar = !ShowSidebar;
+        if(ShowSidebar)     
+        {
+            navegacaopagina.style.marginLeft='-10vw';
+            navegacaopagina.style.animationName='ShowSidebar';
+           
+        }
+        else
+        {
+            navegacaopagina.style.marginLeft="-100vw";
+            navegacaopagina.style.animationName='';
+           
+        }
+        }
+
+        function closesidebar()
+        {
+        if(ShowSidebar){
+            togglesidebar();
+        }
+        }
+
+        withindow.addeventlistener('resize', function(event){
+        if(window.innerWidth >768 && ShowSidebar){
+            togglesidebar();
+        }});
+    </script>
+ 
+
+<script language="JavaScript">
+    let contador = 1;
+
+setInterval(function(){
+    document.getElementById('f'+ contador).checked = true;
+    contador++;
+    if(contador>5){
+        contador=1
+    }
+
+}, 5000);
+</script>
+<script>
+    function Exibe_Resposta(x,y)
+{
+    if (document.getElementById(x).className.indexOf("exibida") == -1)
+    {
+        document.getElementById(x).className = document.getElementById(x).className.replace("escondida","exibida");
+        document.getElementById(y).style.backgroundColor='#aed5b4';
+        document.getElementById(y).style.color='#000000';
+    }
+    else
+    {
+        document.getElementById(x).className = document.getElementById(x).className.replace("exibida","escondida");
+        document.getElementById(y).style.backgroundColor='fff';
+        document.getElementById(y).style.color='#000000';
+    }
+}
+
+
+           
+  
+
+</script>
+<script>
+    function troca_fundo() {
+
+        document.getElementById("body").style.backgroundColor = "#ffa500";
+        document.getElementById("content").style.color = "#fff";
+        document.getElementById("content2").style.color = "#fff";
+        document.getElementById("content3").style.color = "#fff";
+        document.getElementById("claro1").style.display = "block";
+        document.getElementById("colorButton").style.display = "none";
+
+     
+        document.getElementById("subtitulo1").style.color = "#002cb1"; // Azul
+        document.getElementById("subtitulo2").style.color = "#002cb1"; // Azul
+        document.getElementById("subtitulo3").style.color = "#002cb1";
+        document.getElementById("subtitulo4").style.color = "#002cb1"; // Azul
+    }
+
+    function volta_fundo() {
+        
+        document.getElementById("body").style.backgroundColor = "#f7e7bb";
+        document.getElementById("content").style.color = "#000000";
+        document.getElementById("content2").style.color = "#000000";
+        document.getElementById("content3").style.color = "#000000";
+        document.getElementById("claro1").style.display = "none";
+        document.getElementById("colorButton").style.display = "block";
+
+       
+        document.getElementById("subtitulo1").style.color = "#ff0000"; // Vermelho
+        document.getElementById("subtitulo2").style.color = "#ff0000"; // Vermelho
+        document.getElementById("subtitulo3").style.color = "#ff0000";
+        document.getElementById("subtitulo4").style.color = "#ff0000"; // Vermelho
+    }
+</script>
+</body>
+</html>
