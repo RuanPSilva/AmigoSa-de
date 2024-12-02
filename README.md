@@ -10,3 +10,7 @@
 * A ideia por trás da AmigoSaúde é criar uma forma acessível e prática de garantir que os donos de pets possam oferecer cuidados médicos de qualidade para seus animais, sem se preocupar com altos custos. Com uma abordagem focada no conforto e saúde dos animais, a empresa oferece planos personalizados, que podem incluir desde consultas e exames de rotina até tratamentos especializados e emergenciais, adaptando-se às necessidades individuais de cada pet.
 
 * A AmigoSaúde, portanto, não é apenas uma empresa de planos de saúde veterinários, mas um verdadeiro aliado para quem deseja proporcionar uma vida mais longa e saudável para seus animais, sempre com um atendimento humanizado e próximo da realidade dos clientes e seus pets.
+
+
+### Empresa contratada para o desenvolvimento de toda parte tecnologica 
+* [WebCraft](https://github.com/RuanPSilva/AmigoSaude_Project/wiki/WebCraft)
